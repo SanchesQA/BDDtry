@@ -3,14 +3,18 @@ package stepDefinition;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class stepDefinition {
+public class stepDefinition{
     WebDriver driver;
 
 
@@ -38,8 +42,13 @@ public class stepDefinition {
 
     }
 
-    @Then("^User can signup$")
+    @Then("^SignUp form is opened$")
     public void user_can_signup() throws Throwable {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        driver.switchTo().frame(driver.findElement(By.xpath(".//iframe[contains(@ng-src, 'auth.williamhill')]")));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("signupForm"))));
+       // driver.findElement(By.id("signupForm"));
+        driver.quit();
 
     }
 

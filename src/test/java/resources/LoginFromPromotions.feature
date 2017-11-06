@@ -4,4 +4,5 @@ Feature: Signup form is opened from the Promotions tab
         Given User is on the Promotions page
         And User is not logged in
         When User clicks on Join now
-        Then User can signup
+        Then SignUp form is opened
+
